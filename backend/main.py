@@ -16,8 +16,8 @@ from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from pydantic import BaseModel
 import uvicorn
 
-from config import settings
-import database as db
+#from config import settings
+#import database as db
 #from core.language_manager import get_sms_template, validate_language
 #from core.fraud_engine import get_fraud_engine
 #from core.assessment_engine import get_assessment_engine
