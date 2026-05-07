@@ -18,9 +18,9 @@ import uvicorn
 
 from config import settings
 import database as db
-from core.language_manager import get_sms_template, validate_language
-from core.fraud_engine import get_fraud_engine
-from core.assessment_engine import get_assessment_engine
+#from core.language_manager import get_sms_template, validate_language
+#from core.fraud_engine import get_fraud_engine
+#from core.assessment_engine import get_assessment_engine
 
 # ─── App Setup ────────────────────────────────────────────────────────────────
 
@@ -350,7 +350,7 @@ async def complete_interview(session_id: str):
             ))
 
     # Fraud analysis
-    fraud_engine = get_fraud_engine()
+    #fraud_engine = get_fraud_engine()
     video_features_list = [q.video_features for q in question_scores]
     audio_features_list = [q.audio_features for q in question_scores]
     fraud_result = fraud_engine.analyze_session(session_id, video_features_list, audio_features_list)
@@ -610,3 +610,6 @@ if __name__ == "__main__":
     print("🌐 Server: http://localhost:8000")
     print("📖 Docs: http://localhost:8000/docs")
     uvicorn.run(app, host="0.0.0.0", port=8000, reload=settings.debug)
+    @app.get("/")
+def home():
+    return {"message": "AI SkillFit backend working"}
