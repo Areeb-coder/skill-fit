@@ -8,60 +8,30 @@ import subprocess
 import sys
 
 def download_models():
-    """Download all required pretrained models"""
+    """Download only essential models for free tier"""
     
     print("🚀 Setting up pretrained models for AI SkillFit...")
     print("=" * 60)
     
-    # 1. Whisper
+    # 1. Whisper (essential)
     print("\n📥 Downloading Whisper model...")
     import whisper
     whisper.load_model("base")
     print("✅ Whisper model ready")
     
-    # 2. Sentence Transformers
+    # 2. Sentence Transformers (essential)
     print("\n📥 Downloading Sentence Transformer...")
     from sentence_transformers import SentenceTransformer
     SentenceTransformer('all-MiniLM-L6-v2')
     print("✅ Sentence Transformer ready")
     
-    # 3. Sentiment Analysis
-    print("\n📥 Downloading Sentiment Analysis model...")
-    from transformers import pipeline
-    pipeline("sentiment-analysis", model="distilbert-base-uncased-finetuned-sst-2-english")
-    print("✅ Sentiment model ready")
-    
-    # 4. Emotion Detection
-    print("\n📥 Downloading Emotion Detection model...")
-    pipeline("text-classification", model="j-hartmann/emotion-english-distilroberta-base")
-    print("✅ Emotion model ready")
-    
-    # 5. Question Answering
-    print("\n📥 Downloading QA model...")
-    pipeline("question-answering", model="deepset/roberta-base-squad2")
-    print("✅ QA model ready")
-    
-    # 6. spaCy
-    print("\n📥 Downloading spaCy models...")
-    subprocess.run([sys.executable, "-m", "spacy", "download", "en_core_web_sm"])
-    subprocess.run([sys.executable, "-m", "spacy", "download", "xx_ent_wiki_sm"])
-    print("✅ spaCy models ready")
-    
-    # 7. SpeechBrain (optional - skip if not needed)
-    print("\n📥 Downloading SpeechBrain model...")
-    try:
-        from speechbrain.pretrained import EncoderClassifier
-        EncoderClassifier.from_hparams(
-            source="speechbrain/spkrec-xvect-voxceleb",
-            savedir="pretrained_models/spkrec"
-        )
-        print("✅ SpeechBrain model ready")
-    except ImportError:
-        print("⚠️  SpeechBrain not installed, skipping...")
+    # Skip heavy models to save memory
+    print("\n⚠️  Skipping heavy models to save memory on free tier")
+    print("✅ Essential models ready")
     
     print("\n" + "=" * 60)
-    print("✨ All pretrained models downloaded successfully!")
-    print("🎯 No LLM API keys needed - everything runs locally")
+    print("✨ Essential models downloaded successfully!")
+    print("🎯 Running in lightweight mode for free tier")
     print("\nYou can now start the server with:")
     print("  python main.py")
     print("  or")

@@ -7,28 +7,14 @@ pydantic-settings>=2.0.0
 httpx>=0.25.0
 PyJWT>=2.8.0
 
-# Pretrained Models & ML
-transformers==4.35.2
-torch>=2.0.0
+# Essential ML (lightweight)
 sentence-transformers>=2.7.0
 
-# Audio Processing
+# Audio Processing (essential)
 setuptools>=65.0.0
 git+https://github.com/openai/whisper.git
 librosa==0.10.1
 soundfile==0.12.1
-ffmpeg-python>=0.2.0
-
-# Video Processing
-opencv-python-headless>=4.8.0
-mediapipe>=0.10.0
-deepface>=0.0.79
-
-# NLP Models
-spacy==3.7.2
-
-# LLM API
-groq>=1.0.0
 
 # Utilities
 numpy<2.0.0,>=1.24.0
