@@ -1,0 +1,15 @@
+fastapi
+uvicorn[standard]
+python-multipart
+pydantic
+pydantic-settings
+httpx
+PyJWT
+python-dotenv
+numpy
+scikit-learn
+opencv-python-headless
+ffmpeg-python
+librosa
+mediapipe
+groq
