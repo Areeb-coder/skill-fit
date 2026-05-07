@@ -26,9 +26,11 @@ from core.assessment_engine import get_assessment_engine
 
 app = FastAPI(title="AI SkillFit API", version="2.0.0")
 
+# CORS - Allow frontend origin
+allowed_origins = os.getenv("ALLOWED_ORIGINS", "http://localhost:5173").split(",")
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=allowed_origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
