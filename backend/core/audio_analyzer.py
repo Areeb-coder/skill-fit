@@ -276,40 +276,4 @@ def get_audio_analyzer() -> AudioAnalyzer:
     global _audio_analyzer
     if _audio_analyzer is None:
         _audio_analyzer = AudioAnalyzer()
-    return _audio_analyzerlize low energy (hesitant speech)
-        if energy_metrics['avg_energy'] < 0.01:
-            score -= 2.0
-        
-        # Penalize high energy variance (inconsistent)
-        if energy_metrics['energy_variance'] > 0.001:
-            score -= 1.0
-        
-        # Penalize unstable pitch (nervous)
-        if pitch_metrics['pitch_stability'] < 0.7:
-            score -= 1.5
-        
-        # Penalize too many pauses
-        if pause_metrics['pause_count'] > 10:
-            score -= 1.0
-        
-        # Penalize long pauses
-        if pause_metrics['long_pause_count'] > 2:
-            score -= 1.5
-        
-        # Penalize high filler ratio
-        if filler_ratio > 0.1:
-            score -= 2.0
-        elif filler_ratio > 0.05:
-            score -= 1.0
-        
-        return max(0.0, min(10.0, score))
-
-# Singleton instance
-_audio_analyzer = None
-
-def get_audio_analyzer() -> AudioAnalyzer:
-    """Get singleton audio analyzer instance"""
-    global _audio_analyzer
-    if _audio_analyzer is None:
-        _audio_analyzer = AudioAnalyzer()
     return _audio_analyzer
